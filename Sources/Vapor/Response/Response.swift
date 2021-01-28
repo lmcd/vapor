@@ -36,7 +36,7 @@ public final class Response: CustomStringConvertible {
     var forHeadRequest: Bool
 
     public enum Upgrader {
-        case webSocket(maxFrameSize: WebSocketMaxFrameSize, onUpgrade: (WebSocket) -> ())
+        case webSocket(maxFrameSize: WebSocketMaxFrameSize, shouldUpgrade: (() -> EventLoopFuture<HTTPHeaders?>), onUpgrade: (WebSocket) -> ())
     }
     
     public var upgrader: Upgrader?
